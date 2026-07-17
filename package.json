@@ -1,0 +1,22 @@
+{
+  "name": "modulo-equipamentos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "modulos/equipamentos/entrada/executar-exemplo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node modulos/equipamentos/entrada/executar-exemplo.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/powerstore-squad-m4/modulo-equipamentos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/powerstore-squad-m4/modulo-equipamentos/issues"
+  },
+  "homepage": "https://github.com/powerstore-squad-m4/modulo-equipamentos#readme"
+}
