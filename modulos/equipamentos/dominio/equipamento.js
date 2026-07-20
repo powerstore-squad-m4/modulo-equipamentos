@@ -7,8 +7,7 @@ export class Equipamento {
     ativo;
 
     constructor(id, clienteId, serviceTag, tipo, modelo, ativo) {
-        // Dúvida: devemos validar os dados do equipamento aqui ou em outro lugar? 
-        // Por exemplo, validar se o serviceTag é único, se o tipo e modelo são válidos, etc.
+        // TODO: validar os dados do equipamento
         this.id = id
         this.clienteId = clienteId
         this.serviceTag = serviceTag
