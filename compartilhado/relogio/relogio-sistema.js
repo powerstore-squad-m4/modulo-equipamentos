@@ -1,0 +1,1 @@
+export class RelogioSistema { agora() { return new Date(); } }
