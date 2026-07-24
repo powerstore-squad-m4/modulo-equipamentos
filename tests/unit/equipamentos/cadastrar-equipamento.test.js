@@ -12,26 +12,28 @@ function montarCasoDeUso(ids = ['equipamentos-001']) {
     const relogio = new RelogioFixo('2026-07-20T13:00:00.000Z');
     const casoDeUso = new CadastrarEquipamento(repository, geradorId, relogio);
 
-    return { repository, casoDeUso };
+    return casoDeUso;
 }
 
-test('Cadastra equipamento válido sem salvar', async () => {
-    // Arrange: prepara dependências controladas para o teste.
-    const { repository, casoDeUso } = montarCasoDeUso();
-
-    // Act: executa o comportamento que será validado.
-    const equipamento = await casoDeUso.executar({
+test('Cadastra equipamento válido e salva no repositório', async () => {
+    const casoDeUso = montarCasoDeUso();
+    const entrada = {
         serviceTag: 'ABC1234',
         modelo: 'Latitude 7450',
         clienteId: 'cliente-001',
         tipo: TipoEquipamento.NOTEBOOK,
-    });
+    };
 
-    // Assert: compara o resultado obtido com o resultado esperado.
+    const equipamento = await casoDeUso.executar(entrada);
+
     assert.strictEqual(equipamento.id, 'equipamentos-001');
-    assert.strictEqual(equipamento.serviceTag, 'ABC1234');
-    assert.strictEqual(equipamento.modelo, 'Latitude 7450');
-    assert.strictEqual(equipamento.clienteId, 'cliente-001');
-    assert.strictEqual(equipamento.tipo, TipoEquipamento.NOTEBOOK);
+    assert.strictEqual(equipamento.serviceTag, entrada.serviceTag);
+    assert.strictEqual(equipamento.modelo, entrada.modelo);
+    assert.strictEqual(equipamento.clienteId, entrada.clienteId);
+    assert.strictEqual(equipamento.tipo, entrada.tipo);
     assert.strictEqual(equipamento.criadoEm.toISOString(), '2026-07-20T13:00:00.000Z');
+
+    // Verifica se o equipamento foi salvo corretamente no repositório
+    const equipamentoSalvo = await casoDeUso.repository.buscarPorId('equipamentos-001');
+    assert.deepStrictEqual(equipamentoSalvo, equipamento);
 });
