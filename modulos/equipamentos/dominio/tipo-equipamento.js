@@ -1,0 +1,8 @@
+export const TipoEquipamento = Object.freeze({
+  NOTEBOOK: 'NOTEBOOK',
+  DESKTOP: 'DESKTOP',
+  WORKSTATION: 'WORKSTATION',
+  SERVIDOR: 'SERVIDOR',
+  MONITOR: 'MONITOR',
+  PERIFERICO: 'PERIFERICO'
+});
