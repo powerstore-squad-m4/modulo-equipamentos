@@ -16,23 +16,26 @@ O módulo permite cadastrar equipamentos, garantindo que as principais regras de
 ## Estrutura do Módulo
 
 ```text
-equipamento/
-|-- modulos/
+modulo-equipamentos/
+|-- modulos/equipamentos/
 |     |-- dominio/
 |     |    |-- equipamento.js
-|     |
-|     |-- ports/
-|     |    |-- cliente-consulta.port.js
+|     |    |-- tipo-equipamento.js
 |     |
 |     |-- infraestrutura/
-|     |    |-- equipamento.repository.memory.js
+|     |    |-- equipamento-repository-memoris.js
 |     |    |-- doubles/
 |     |         |-- cliente-consulta.double.js
 |     |
 |     |-- aplicacao/
-|     |    |-- cadastrar-equipamento.js
+|     |    |-- casos-de-uso/
+|     |    |    |-- cadastrar-equipamento.js
+|     |    |-- ports/
+|     |         |-- cliente-consulta.port.js
+|     |         |-- equipamento-repository-port.js
 |     |
 |     |-- entrada/
 |          |-- executar-exemplo.js
+|
 |-- README.md
 |-- DECISOES.md
