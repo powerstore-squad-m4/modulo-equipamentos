@@ -20,7 +20,6 @@ Os módulos do projeto seguem uma separação de responsabilidades baseada nas s
 
 ```text
 dominio/
-ports/
 infraestrutura/
 aplicacao/
 entrada/
