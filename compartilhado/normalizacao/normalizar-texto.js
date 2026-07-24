@@ -1,0 +1,1 @@
+export const normalizarTexto = (valor) => String(valor ?? '').trim().replace(/\s+/g,' ');

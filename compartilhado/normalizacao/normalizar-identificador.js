@@ -1,0 +1,1 @@
+export const normalizarIdentificador = (valor) => String(valor ?? '').trim().replace(/\s+/g,'').toUpperCase();
