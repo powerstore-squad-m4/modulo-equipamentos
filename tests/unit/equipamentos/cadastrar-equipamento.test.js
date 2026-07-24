@@ -37,3 +37,29 @@ test('Cadastra equipamento válido e salva no repositório', async () => {
     const equipamentoSalvo = await casoDeUso.repository.buscarPorId('equipamentos-001');
     assert.deepStrictEqual(equipamentoSalvo, equipamento);
 });
+
+test('Lança erro ao tentar cadastrar equipamento com serviceTag duplicada', async () => {
+    const casoDeUso = montarCasoDeUso();
+    const entrada1 = {
+        serviceTag: 'ABC1234',
+        modelo: 'Latitude 7450',
+        clienteId: 'cliente-001',
+        tipo: TipoEquipamento.NOTEBOOK,
+    };
+
+    const entrada2 = {
+        serviceTag: 'ABC1234', // mesma serviceTag do primeiro equipamento
+        modelo: 'Latitude 7550',
+        clienteId: 'cliente-002',
+        tipo: TipoEquipamento.NOTEBOOK,
+    };
+
+    await casoDeUso.executar(entrada1);
+
+    await assert.rejects(
+        async () => {
+            await casoDeUso.executar(entrada2);
+        },
+        erro => erro.codigo === 'EQUIPAMENTO_JA_EXISTE'
+    );
+});
