@@ -23,7 +23,7 @@ export class Equipamento {
         if(!d.tipo) {
             throw new ErroValidacao('TIPO_EQUIPAMENTO_INVALIDO', 'Tipo de equipamento obrigatório.');
         }
-        if (Object.values(TipoEquipamento).includes(d.tipo)) {
+        if (!Object.values(TipoEquipamento).includes(d.tipo)) {
             throw new ErroValidacao('TIPO_EQUIPAMENTO_INVALIDO', 'Tipo de equipamento inválido.');
         }
 
