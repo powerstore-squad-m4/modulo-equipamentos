@@ -1,10 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { EquipamentoRepositoryMemoria } from '../infraestrutura/equipamento-repository-memoria.js';
-import { CadastrarEquipamento } from '../aplicacao/casos-de-uso/cadastrar-equipamento.js';
+import { EquipamentoRepositoryMemoria } from '../../../modulos/equipamentos/infraestrutura/equipamento-repository-memoria.js';
 import { GeradorIdFixo } from '../../../compartilhado/ids/gerador-id-fixo.js';
 import { RelogioFixo } from '../../../compartilhado/relogio/relogio-fixo.js';
-import { TipoEquipamento } from '../dominio/tipo-equipamento.js';
+import { CadastrarEquipamento } from '../../../modulos/equipamentos/aplicacao/casos-de-uso/cadastrar-equipamento.js';
+import { TipoEquipamento } from '../../../modulos/equipamentos/dominio/tipo-equipamento.js';
 
 function montarCasoDeUso(ids = ['equipamentos-001']) {
     const repository = new EquipamentoRepositoryMemoria();
@@ -33,5 +33,5 @@ test('Cadastra equipamento válido sem salvar', async () => {
     assert.strictEqual(equipamento.modelo, 'Latitude 7450');
     assert.strictEqual(equipamento.clienteId, 'cliente-001');
     assert.strictEqual(equipamento.tipo, TipoEquipamento.NOTEBOOK);
-    assert.strictEqual(equipamento.dataCadastro, '2026-07-20T13:00:00.000Z');
+    assert.strictEqual(equipamento.criadoEm.toISOString(), '2026-07-20T13:00:00.000Z');
 });
