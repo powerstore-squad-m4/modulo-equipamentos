@@ -5,7 +5,8 @@
   "main": "modulos/equipamentos/entrada/executar-exemplo.js",
   "scripts": {
     "test": "node --test",
-    "start": "node modulos/equipamentos/entrada/executar-exemplo.js"
+    "start": "node modulos/equipamentos/entrada/executar-exemplo.js",
+    "test:postgres": "node modulos/equipamentos/entrada/testar-conexao-postgres.js"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/powerstore-squad-m4/modulo-equipamentos/issues"
   },
-  "homepage": "https://github.com/powerstore-squad-m4/modulo-equipamentos#readme"
+  "homepage": "https://github.com/powerstore-squad-m4/modulo-equipamentos#readme",
+  "dependencies": {
+    "pg": "^8.12.0"
+  }
 }
